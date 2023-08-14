@@ -1,10 +1,9 @@
 import ca.uhn.fhir.context.FhirContext;
+import ca.uhn.fhir.model.api.TemporalPrecisionEnum;
 import ca.uhn.fhir.rest.api.MethodOutcome;
 import ca.uhn.fhir.rest.client.api.IGenericClient;
-import org.hl7.fhir.r4.model.CodeableConcept;
-import org.hl7.fhir.r4.model.Coding;
-import org.hl7.fhir.r4.model.Observation;
-import org.hl7.fhir.r4.model.Patient;
+import org.hl7.fhir.r4.model.*;
+import org.monarchinitiative.hapiphenocore.phenopacket.PhenotypicFeature;
 
 import java.util.Date;
 
@@ -28,6 +27,17 @@ public class Example1 {
         MethodOutcome obsResult = client.create().resource(o).execute();
         System.out.println(obsResult.getResource().getIdElement().getValue());
 
+        PhenotypicFeature feature = new PhenotypicFeature();
+
+        DateTimeType date = new DateTimeType();
+        date.setPrecision(TemporalPrecisionEnum.DAY);
+        BaseDateTimeType baseDateTimeType = date.setYear(2022).setDay(1).setMonth(1);
+        feature.setEffective(baseDateTimeType);
+        feature.setHpoSevere();
+
+        MethodOutcome featureOutcome = client.create().resource(feature).execute();
+
+        System.out.println(featureOutcome.getResource().getIdElement());
 
     }
 }
