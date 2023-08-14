@@ -25,6 +25,13 @@
             <artifactId>hapi-fhir-structures-r4</artifactId>
             <version>6.6.0</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.phenopackets.hapipheno</groupId>
+            <artifactId>hapipheno-core</artifactId>
+            <version>0.4.2-SNAPSHOT</version>
+        </dependency>
+
     </dependencies>
 
 </project>
