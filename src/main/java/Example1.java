@@ -29,10 +29,14 @@ public class Example1 {
 
         PhenotypicFeature feature = new PhenotypicFeature();
 
-        DateTimeType date = new DateTimeType();
-        date.setPrecision(TemporalPrecisionEnum.DAY);
-        BaseDateTimeType baseDateTimeType = date.setYear(2022).setDay(1).setMonth(1);
-        feature.setEffective(baseDateTimeType);
+        feature.setOnset(2022, 1, 1);
+
+//        DateTimeType date = new DateTimeType();
+//        date.setPrecision(TemporalPrecisionEnum.DAY);
+//        BaseDateTimeType baseDateTimeType = date.setYear(2022).setDay(1).setMonth(1);
+//        feature.setEffective(baseDateTimeType);
+
+
         feature.setHpoSevere();
 
         MethodOutcome featureOutcome = client.create().resource(feature).execute();
